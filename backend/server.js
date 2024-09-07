@@ -1,5 +1,6 @@
 require('dotenv').config()
 
+const morgan = require('morgan')
 const express = require('express')
 const mongoose = require('mongoose')
 const workoutRoutes = require('./routes/workouts') //connect the workout routes
@@ -9,6 +10,9 @@ const app = express()
 
 //middleware 
 app.use(express.json())
+
+//morgan
+app.use(morgan("dev"))
 
 app.use(( req, res, next ) => {
   console.log(req.path, req.method)
